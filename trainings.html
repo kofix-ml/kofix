@@ -132,11 +132,30 @@
     
 	<!-- js will be here -->
 	<script src="https://use.fontawesome.com/2961340bdf.js"></script>
+  <script src="/ajax.handler.js"></script>
 	<script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/js/materialize.min.js"></script>
 	<script>
 		$(document).ready(function(){
-			
+
+      window.getnews    = function(data){
+        window.newsfetched = $.parseJSON(data);
+        // var select_DM = $('#district_manager');
+        newsall = '';
+        // for(DM in DMlist){
+        //   DMdropdown    +=      '<option value="'+DMlist[DM]['user_id']+'">'+DMlist[DM]['user_name']+'</option>';
+          
+        // }
+        // select_DM.html('<option value="0">Select District Manager</option>'+DMdropdown);
+        console.dir(newsfetched);
+      }
+
+
+			window.loadnews = function(){
+        GET('http://localhost:5000/api/news/all','','getnews');
+      }
+
+      window.loadnews();
 		});
 	</script>
 </body>
